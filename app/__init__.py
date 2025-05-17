@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
@@ -22,6 +22,11 @@ def create_app(environment="development"):
     migrate = Migrate(app, db)
     jwt = JWTManager(app)
     socketio.init_app(app)
+
+    # 添加根路由
+    @app.route('/')
+    def root():
+        return jsonify({"status": "healthy", "message": "Service is running"}), 200
 
     with app.app_context():
         from app.routes import ai_chat, auth, course, file, group_chat, user, student
