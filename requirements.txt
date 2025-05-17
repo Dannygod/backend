@@ -19,6 +19,9 @@ PyJWT==2.9.0
 cryptography==43.0.1
 python-dotenv==1.0.1
 
+# AI and Vector Search
+faiss-cpu==1.7.4
+
 # Utilities
 requests==2.32.3
 python-socketio==5.11.4
