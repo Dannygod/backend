@@ -33,7 +33,8 @@ class Config:
     DB_NAME = os.environ.get("DB_NAME", "zeabur")
     DB_PORT = int(os.environ.get("DB_PORT", "3306"))
     SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{DB_USER}:{quote_plus(DB_PASSWORD)}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-    
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", SECRET_KEY)
     JWT_ACCESS_TOKEN_EXPIRES = False
 
