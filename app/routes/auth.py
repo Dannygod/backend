@@ -6,6 +6,10 @@ from marshmallow import ValidationError
 
 bp = Blueprint('auth', __name__)
 
+@bp.route('/', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy", "message": "Service is running"}), 200
+
 @bp.route('/login', methods=['POST'])
 # 處理使用者登入
 def login():
