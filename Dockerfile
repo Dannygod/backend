@@ -1,5 +1,5 @@
 # 使用 Python 3.11 作為基礎映像
-FROM python:3.11-slim
+FROM python:3.10
 
 # 設置工作目錄
 WORKDIR /app
@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 
 # 安裝 Python 依賴
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir numpy && \
+    pip install --no-cache-dir -r requirements.txt
 
 # 複製應用程序代碼
 COPY . .
